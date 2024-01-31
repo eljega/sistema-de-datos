@@ -1,0 +1,14 @@
+*.pyc
+*~
+__pycache__
+db.sqlite3
+/.venv
+/env
+*.env
+*.swp
+*settings.py # Si contiene información sensible, es mejor usar variables de entorno
+*secrets.json 
+*.idea
+*.vscode 
+/staticfiles 
+/media 

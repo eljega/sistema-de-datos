@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'dashboard.css' %}">
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Dashboard</h1>
+  <div class="dashboard-menu">
+    <a href="{% url 'lista_alumnos' %}" class="dashboard-item">Alumnos</a>
+    <a href="{% url 'lista_nucleos' %}" class="dashboard-item">Núcleos</a>
+    <a href="{% url 'lista_personal' %}" class="dashboard-item">Personal</a>
+    <a href="{% url 'lista_instrumentos' %}" class="dashboard-item"> Bienes Nacionales</a>
+    <!-- Más elementos del dashboard aquí -->
+  </div>
+  <form action="{% url 'logout' %}" method="post" class="logout-form">
+      {% csrf_token %}
+      <button type="submit" class="btn-logout">Cerrar Sesión</button>
+  </form>
+</div>
+{% endblock %}

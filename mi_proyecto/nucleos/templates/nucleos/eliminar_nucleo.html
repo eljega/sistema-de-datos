@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'eliminar_alumno.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+  <h2>¿Estás seguro de que quieres eliminar a "{{ nucleo.nombre }}"?</h2>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'lista_nucleos' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

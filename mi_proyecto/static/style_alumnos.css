@@ -1,0 +1,248 @@
+/* Estilos generales */
+body {
+    background: linear-gradient(135deg, #17202A 0%, #34495E 50%, #880E4F 100%);
+    color: #fff;
+  }
+  
+  /* Encabezado */
+  h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  body .btn-primary {
+    background-color: #34495E; /* Color azul oscuro */
+    border-color: #17202A; /* Color casi negro */
+    margin-right: 10px;
+
+  }
+
+  /* Botón Agregar Nuevo Alumno */
+  body  .btn-success {
+        background-color: #C2185B; /* Color rosa fuerte */
+        border-color: #880E4F; /* Color rosa oscuro */
+        margin-right: 10px;
+
+    }
+
+  body .btn-primary:hover {
+        background-color: #34495E; /* Color azul oscuro */
+        border-color: #17202A; /* Color casi negro */
+        margin-right: 10px;
+    
+      }
+
+   body .btn-success:hover {
+        background-color: #000000; /* Color rosa fuerte */
+        border-color: #880E4F; /* Color rosa oscuro */
+    }
+
+    /* Animación al pasar el mouse sobre los botones */
+   body .btn {
+        transition: transform 0.3s;
+    }
+  
+  body .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  
+  /* Botón Editar */
+  .btn-sm.btn-primary {
+    background-color: #17202A; /* Color casi negro */
+    border-color: #34495E; /* Color azul oscuro */
+  }
+  
+  /* Botón Eliminar */
+  .btn-sm.btn-danger {
+    background-color: #880E4F; /* Color rosa oscuro */
+    border-color: #C2185B; /* Color rosa fuerte */
+  }
+
+  .btn-sm.btn-danger:hover {
+    background-color: #D81B60; /* Color rosa oscuro */
+    border-color: #C2185B; /* Color rosa fuerte */
+  }
+  
+  /* Formulario de Búsqueda */
+  .form-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #34495E;
+  }
+
+  /* Estilos adicionales para el botón de búsqueda, si existe */
+.btn-search {
+    background-color: #34495E;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    }
+    
+    .btn-search:hover {
+    background-color: #17202A;
+    }
+    
+    /* Estilos para la animación de los campos de formulario al cargar */
+    @keyframes fadeInUp {
+    from {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+    }
+    
+    to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    }
+    }
+    
+    .form-control, .select-custom select {
+    animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+  .table-container {
+    overflow-x: auto;
+  }
+  /* Estilos para la tabla */
+  .table {
+    background-color: #343a40;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    
+  }
+  /* Contenedor alrededor de la tabla */
+
+
+  
+  .table thead {
+    background-color: #34495E;
+    color: #ffffff;
+  }
+  
+  .table tbody tr {
+    transition: background-color 0.3s;
+    background-color: #19222c63;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #343434;
+  }
+  
+  /* Estilo para botones de acción */
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  
+  /* Animaciones */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .table {
+    animation: fadeIn 1s;
+  }
+
+
+
+  /*botones*/
+  body .btn-listas {
+    width: 5.5em;
+    height: 2.0em;
+    margin: 0.5em;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+
+   /* Estilos adicionales solo para el botón Eliminar */
+.btn-eliminar {
+  
+    background: #e10052; /* Reemplaza esto con el color que prefieras */
+  }
+  
+  /* Opcional: Si también quieres cambiar el color al pasar el mouse (hover) */
+  .btn-eliminar:hover {
+    background: #9a0000; /* Reemplaza esto con el color para el hover que prefieras */
+  }
+
+body .btn-descargar {
+    
+    width: 5.5em;
+    height: 2.0em;
+    margin: 0.5em;
+    background: rgb(33, 33, 33);
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+  }
+  
+   
+   .btn-listas:hover {
+    color: black;
+   }
+   
+   .btn-listas:after {
+    content: "";
+    background: white;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   .btn-listas:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }
+
+
+   @media (max-width: 768px) {
+    /* Reducir el tamaño de la fuente para dispositivos móviles */
+    .table thead th, .table tbody td {
+      font-size: 12px;
+    }
+    /* Otros estilos específicos para móviles */
+  }
+  @media (max-width: 768px) {
+    .btn-listas, .form-control, .btn-search {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+    
+
+  

@@ -1,0 +1,24 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <title>{% block title %}El Sistema Guárico{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <!-- Contenido por defecto, si es necesario -->
+    {% endblock %}
+    {% block extra_body %}{% endblock %}
+</body>
+</html>
+
+

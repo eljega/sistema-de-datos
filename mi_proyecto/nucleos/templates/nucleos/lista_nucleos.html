@@ -1,0 +1,94 @@
+<!-- nucleos/templates/nucleos/lista_nucleos.html -->
+{% extends 'base.html' %}
+
+{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style_alumnos.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h2>Lista de Núcleos</h2>
+  <button class="btn btn-listas" onclick="location.href='{% url 'dashboard' %}'">Volver</button>
+  
+  
+  {% if request.user.es_superior %}
+    <button class="btn btn-listas" onclick="location.href='{% url 'crear_nucleo' %}'">Agregar</button>
+  {% endif %}
+  <button id="descargar-reporte-btn" class="btn btn-listas btn-descargar" onclick="location.href='{% url 'descargar_reporte_nucleos' %}?nucleo={{ request.GET.nucleo }}'">Descargar</button>
+
+    <!-- Añade un campo de selección de núcleo en tu formulario de búsqueda -->
+    <form method="get" action="{% url 'lista_nucleos' %}">
+      <div class="form-group">
+        <input type="text" name="q" class="form-control" placeholder="Buscar núcleos..." value="{{ request.GET.q }}">
+      </div>
+    </form>
+
+    <!-- Tabla de núcleos -->
+  <table class="table table-dark dashboard-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>codigo</th>
+        <th>fecha_apertura</th>
+        <th>direccion</th>
+        <th>telefono</th>
+        <th>estatus_inmueble</th>
+        <th>infraestructura</th>
+        <th>nombre_responsable</th>
+        <!-- Agrega más encabezados de columnas según tu modelo Núcleo -->
+        {% if request.user.es_superior %}
+        <th>Acciones</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for nucleo in nucleos %}
+        <tr>
+          <td>{{ nucleo.nombre }}</td>
+          <td>{{ nucleo.codigo }}</td>
+          <td>{{ nucleo.fecha_apertura }}</td>
+          <td>{{ nucleo.direccion }}</td>
+          <td>{{ nucleo.telefono }}</td>
+          <td>{{ nucleo.estatus_inmueble }}</td>
+          <td>{{ nucleo.infraestructura }}</td>
+          <td>{{ nucleo.nombre_responsable }}</td>
+          <!-- Agrega más celdas de datos según tu modelo Núcleo -->
+          <td>
+            {% if request.user.es_superior %}
+              <button class="btn btn-listas" onclick="location.href='{% url 'editar_nucleo' nucleo.id %}'">Editar</button>
+              <button class="btn btn-listas btn-eliminar" onclick="location.href='{% url 'eliminar_nucleo' nucleo.id %}'">Eliminar</button>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% block javascript %}
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      // Función para enviar una solicitud AJAX al servidor y actualizar la vista con la respuesta
+      function fetchFilteredData() {
+        const searchInput = document.querySelector('input[name="q"]');
+        const queryString = `q=${searchInput.value}`;
+        
+        fetch(`{% url 'lista_nucleos' %}?${queryString}`)
+          .then(response => response.text())
+          .then(html => {
+            const newBody = new DOMParser().parseFromString(html, 'text/html').body;
+            document.querySelector('table').innerHTML = newBody.querySelector('table').innerHTML;
+          });
+      }
+  
+      // Evento de teclado para el campo de búsqueda
+      document.querySelector('input[name="q"]').addEventListener('keyup', function () {
+        fetchFilteredData();
+      });
+    });
+  </script>
+  {% endblock %}
+  
+  
+{% endblock %}

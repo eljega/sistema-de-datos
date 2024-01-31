@@ -1,0 +1,36 @@
+<!-- instrumentos/templates/instrumentos/crear_instrumento.html -->
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="{% static 'style_crear.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2>Agregar Nuevo Instrumento</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        {% if field.errors %}
+          {% for error in field.errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+  <a href="{% url 'lista_instrumentos' %}" class="btn btn-secondary mt-3">Volver a la lista de instrumentos</a>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+
+  
+  /* Estilos generales del dashboard */
+.dashboard-container {
+    text-align: center;
+    padding: 3rem 1rem;
+    min-height: 100vh; /* Asegúrate de que el contenedor llene la pantalla */
+    background: rgba(0, 0, 0, 0.5); /* Añade un overlay oscuro para mejorar la legibilidad */
+    background: url('/static/images/3.webp') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  /* Título del Dashboard con efecto de resplandor para resaltar sobre la imagen */
+  .dashboard-title {
+    color: #fff;
+    text-shadow: 0 0 10px #000, 0 0 20px #000; /* Resplandor alrededor del texto para mejorar la visibilidad */
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s;
+  }
+  
+  /* Menú del Dashboard con estilos mejorados */
+  .dashboard-menu {
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra los elementos del menú */
+    gap: 1rem;
+  }
+  
+  /* Estilos para cada elemento del menú del Dashboard */
+  .dashboard-item {
+    background: #ffffff;
+    color: #17202A;
+    padding: 0.75rem 1.5rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dashboard-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Botón de cerrar sesión con estilo consistente */
+  body .btn-logout {
+    background-color: #63788c;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+  
+  .btn-logout:hover {
+    background-color: #8292a0;
+    transform:translateY(-5px);
+}
+
+/* Añadir una animación de aparición para los botones */
+@keyframes popIn {
+0% {
+opacity: 0;
+transform: scale(0.8);
+}
+100% {
+opacity: 1;
+transform: scale(1);
+}
+}
+
+.dashboard-item,
+.btn-logout {
+animation: popIn 0.6s ease-out forwards;
+}
+
+/* Añadir un efecto de resplandor al pasar el mouse sobre los botones para un feedback interactivo */
+.dashboard-item:hover,
+.btn-logout:hover {
+box-shadow: 0 0 15px #fff;
+}  

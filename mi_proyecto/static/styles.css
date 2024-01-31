@@ -1,0 +1,125 @@
+/* styles.css */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  
+}
+
+.main-title {
+  position: absolute; /* Posición absoluta respecto al contenedor */
+  top: 80px; /* Espaciado desde la parte superior del contenedor */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translateX(-50%); /* Ajuste fino para centrar exactamente el elemento */
+  color: #fff;
+  font-family: 'Nunito', sans-serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.897);
+}
+
+
+.login-container {
+  background: url('/static/images/1.webp') no-repeat center center fixed; 
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+}
+
+.login-box {
+  background: #F4F6F7; /* Base color */
+  padding: 40px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 1px solid #ddd; /* Fallback for older browsers */
+  background: linear-gradient(to right, #880E4F, #E91E63); /* Degradado */
+  color: #fff;
+  margin-top: 60px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.login-box h1 {
+  margin-bottom: 24px;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.9em;
+  font-family: 'Nunito', sans-serif;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.911);
+}
+
+.input-group {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.input-group input {
+  border: 1px solid #ccc; /* Borde más fino */
+  background-color: #f4f6f7; /* Fondo sutil */
+  color: #333; /* Texto oscuro para contraste */
+  padding: 10px 15px; /* Espaciado interno adecuado */
+  border-radius: 4px; /* Esquinas redondeadas */
+  font-size: 16px; /* Tamaño de texto legible */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave para borde y sombra */
+}
+
+.input-group input:focus {
+  border-color: #880e4f; /* Cambia el color del borde en foco */
+  box-shadow: 0 0 8px rgba(136, 14, 79, 0.2); /* Sombra sutil al enfocar */
+}
+
+
+.login-btn {
+  width: 100%;
+
+  box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para indicar elevación */
+  background-color: #880e4f; /* Color de fondo inicial */
+  color: #ffffff; /* Texto en blanco para alto contraste */
+  border: none; /* Eliminar borde */
+  padding: 12px 20px; /* Espaciado interno adecuado */
+  border-radius: 4px; /* Esquinas redondeadas */
+  font-size: 18px; /* Tamaño de texto grande y legible */
+  font-weight: bold; /* Texto en negrita para resaltar */
+  cursor: pointer; /* Cursor de mano para indicar clic */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transición suave para color de fondo y sombra */
+}
+
+.login-btn:hover {
+  background-color: #e91e63; /* Color de fondo al pasar el cursor */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil para indicar elevación */
+}
+
+/* Asegúrate de que tus campos de entrada y botones sean legibles y estén enfocados en la accesibilidad */
+.input-group input {
+  background: rgba(255, 255, 255, 0.7);
+  color: #333;
+}
+
+.input-group input::placeholder {
+  color: #666;
+}
+
+.input-icon {
+  position: absolute;
+  margin: 10px; /* Ajustar según sea necesario */
+  color: #ffffff; /* O el color que prefieras */
+  margin-left: -25px;
+}
+
+
+/* Ajusta los estilos para pantallas más pequeñas si es necesario */
+@media (max-width: 768px) {
+  .login-box {
+    width: 90%;
+    }
+    }

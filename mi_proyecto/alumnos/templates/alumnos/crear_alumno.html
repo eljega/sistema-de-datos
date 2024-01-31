@@ -1,0 +1,32 @@
+<!-- alumnos/templates/alumnos/crear_alumno.html -->
+{% extends 'base.html' %}
+
+{% load static %} 
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style_crear.css' %}">
+
+{% endblock %}
+{% block content %}
+
+  <div class="container mt-5">
+    <h2>Agregar Nuevo Alumno</h2>
+    <form method="post" class="mt-3">
+      {% csrf_token %}
+      
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </form>
+    <a href="{% url 'lista_alumnos' %}" class="btn btn-secondary mt-3">Volver a la lista de alumnos</a>
+  </div>
+  {% if form.non_field_errors %}
+  <div class="alert alert-danger" role="alert">
+    {{ form.non_field_errors }}
+  </div>
+  {% endif %}
+
+{% endblock %}

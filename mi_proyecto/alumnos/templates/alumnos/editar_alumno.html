@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'style_crear.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h2>Editar Alumno</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+
+  <a href="{% url 'lista_alumnos' %}" class="btn btn-secondary mt-3">Cancelar</a>
+
+</div>
+  {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {{ form.non_field_errors }}
+    </div>
+  {% endif %}
+{% endblock %}
