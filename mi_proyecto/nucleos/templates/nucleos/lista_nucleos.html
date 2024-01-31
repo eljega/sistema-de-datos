@@ -1,7 +1,7 @@
 <!-- nucleos/templates/nucleos/lista_nucleos.html -->
 {% extends 'base.html' %}
 
-{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+{% load static %} 
 
 {% block extra_head %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -18,14 +18,12 @@
   {% endif %}
   <button id="descargar-reporte-btn" class="btn btn-listas btn-descargar" onclick="location.href='{% url 'descargar_reporte_nucleos' %}?nucleo={{ request.GET.nucleo }}'">Descargar</button>
 
-    <!-- Añade un campo de selección de núcleo en tu formulario de búsqueda -->
     <form method="get" action="{% url 'lista_nucleos' %}">
       <div class="form-group">
         <input type="text" name="q" class="form-control" placeholder="Buscar núcleos..." value="{{ request.GET.q }}">
       </div>
     </form>
 
-    <!-- Tabla de núcleos -->
   <table class="table table-dark dashboard-table">
     <thead>
       <tr>
@@ -37,7 +35,6 @@
         <th>estatus_inmueble</th>
         <th>infraestructura</th>
         <th>nombre_responsable</th>
-        <!-- Agrega más encabezados de columnas según tu modelo Núcleo -->
         {% if request.user.es_superior %}
         <th>Acciones</th>
         {% endif %}
@@ -54,7 +51,6 @@
           <td>{{ nucleo.estatus_inmueble }}</td>
           <td>{{ nucleo.infraestructura }}</td>
           <td>{{ nucleo.nombre_responsable }}</td>
-          <!-- Agrega más celdas de datos según tu modelo Núcleo -->
           <td>
             {% if request.user.es_superior %}
               <button class="btn btn-listas" onclick="location.href='{% url 'editar_nucleo' nucleo.id %}'">Editar</button>
@@ -69,7 +65,6 @@
   {% block javascript %}
   <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-      // Función para enviar una solicitud AJAX al servidor y actualizar la vista con la respuesta
       function fetchFilteredData() {
         const searchInput = document.querySelector('input[name="q"]');
         const queryString = `q=${searchInput.value}`;
@@ -82,7 +77,6 @@
           });
       }
   
-      // Evento de teclado para el campo de búsqueda
       document.querySelector('input[name="q"]').addEventListener('keyup', function () {
         fetchFilteredData();
       });

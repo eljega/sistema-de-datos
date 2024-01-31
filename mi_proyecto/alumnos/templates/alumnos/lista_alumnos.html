@@ -1,6 +1,6 @@
 <!-- alumnos/templates/alumnos/lista_alumnos.html -->
 {% extends 'base.html' %}
-{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+{% load static %} 
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'style_alumnos.css' %}">
@@ -9,13 +9,9 @@
   <h2>Lista de Alumnos</h2>
   <button class="btn btn-listas" onclick="location.href='{% url 'dashboard' %}'">Volver</button>
 
-  
-
   <button class="btn btn-listas" onclick="location.href='{% url 'nuevo_alumno' %}'">Agregar</button>
   <button id="descargar-reporte-btn" class="btn btn-listas btn-descargar" onclick="location.href='{% url 'descargar_reporte_alumnos' %}?nucleo={{ request.GET.nucleo }}'">Descargar</button>
 
-
-  <!-- Añade un campo de selección de núcleo en tu formulario de búsqueda  -->
 <form method="get" action="{% url 'lista_alumnos' %}">
   <div class="form-group">
     <input type="text" name="q" class="form-control" placeholder="Buscar Alumnos..." value="{{ request.GET.q }}">
@@ -77,9 +73,8 @@
 </table>
 
 
-  <!-- personal/templates/personal/fragmento_lista_personal.html -->
 <table class="table">
-  <!-- ... contenido de tu tabla ... -->
+ 
 </table>
 
 {% block javascript %}

@@ -12,30 +12,30 @@ body {
   }
   
   body .btn-primary {
-    background-color: #34495E; /* Color azul oscuro */
-    border-color: #17202A; /* Color casi negro */
+    background-color: #34495E;
+    border-color: #17202A; 
     margin-right: 10px;
 
   }
 
   /* Botón Agregar Nuevo Alumno */
   body  .btn-success {
-        background-color: #C2185B; /* Color rosa fuerte */
-        border-color: #880E4F; /* Color rosa oscuro */
+        background-color: #C2185B; 
+        border-color: #880E4F;
         margin-right: 10px;
 
     }
 
   body .btn-primary:hover {
-        background-color: #34495E; /* Color azul oscuro */
-        border-color: #17202A; /* Color casi negro */
+        background-color: #34495E; 
+        border-color: #17202A;
         margin-right: 10px;
     
       }
 
    body .btn-success:hover {
-        background-color: #000000; /* Color rosa fuerte */
-        border-color: #880E4F; /* Color rosa oscuro */
+        background-color: #000000;
+        border-color: #880E4F; 
     }
 
     /* Animación al pasar el mouse sobre los botones */
@@ -50,19 +50,19 @@ body {
   
   /* Botón Editar */
   .btn-sm.btn-primary {
-    background-color: #17202A; /* Color casi negro */
-    border-color: #34495E; /* Color azul oscuro */
+    background-color: #17202A; 
+    border-color: #34495E; 
   }
   
   /* Botón Eliminar */
   .btn-sm.btn-danger {
-    background-color: #880E4F; /* Color rosa oscuro */
-    border-color: #C2185B; /* Color rosa fuerte */
+    background-color: #880E4F;
+    border-color: #C2185B;
   }
 
   .btn-sm.btn-danger:hover {
-    background-color: #D81B60; /* Color rosa oscuro */
-    border-color: #C2185B; /* Color rosa fuerte */
+    background-color: #D81B60; 
+    border-color: #C2185B; 
   }
   
   /* Formulario de Búsqueda */
@@ -123,10 +123,7 @@ body {
     background-color: transparent;
     
   }
-  /* Contenedor alrededor de la tabla */
 
-
-  
   .table thead {
     background-color: #34495E;
     color: #ffffff;
@@ -158,8 +155,6 @@ body {
   }
 
 
-
-  /*botones*/
   body .btn-listas {
     width: 5.5em;
     height: 2.0em;
@@ -176,15 +171,15 @@ body {
     overflow: hidden;
    }
 
-   /* Estilos adicionales solo para el botón Eliminar */
+
 .btn-eliminar {
   
-    background: #e10052; /* Reemplaza esto con el color que prefieras */
+    background: #e10052; 
   }
   
-  /* Opcional: Si también quieres cambiar el color al pasar el mouse (hover) */
+
   .btn-eliminar:hover {
-    background: #9a0000; /* Reemplaza esto con el color para el hover que prefieras */
+    background: #9a0000; 
   }
 
 body .btn-descargar {
@@ -231,11 +226,9 @@ body .btn-descargar {
 
 
    @media (max-width: 768px) {
-    /* Reducir el tamaño de la fuente para dispositivos móviles */
     .table thead th, .table tbody td {
       font-size: 12px;
     }
-    /* Otros estilos específicos para móviles */
   }
   @media (max-width: 768px) {
     .btn-listas, .form-control, .btn-search {

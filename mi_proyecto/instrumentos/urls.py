@@ -12,5 +12,4 @@ urlpatterns = [
     path('eliminar/<int:instrumento_id>/', views.eliminar_instrumento, name='eliminar_instrumento'),
     path('descargar_reporte_instrumentos/', views.descargar_reporte_instrumentos, name='descargar_reporte_instrumentos'),
 
-    # ... puedes agregar más URLs específicas para esta aplicación ...
 ]

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+{% load static %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'dashboard.css' %}">
@@ -14,7 +14,6 @@
     <a href="{% url 'lista_nucleos' %}" class="dashboard-item">Núcleos</a>
     <a href="{% url 'lista_personal' %}" class="dashboard-item">Personal</a>
     <a href="{% url 'lista_instrumentos' %}" class="dashboard-item"> Bienes Nacionales</a>
-    <!-- Más elementos del dashboard aquí -->
   </div>
   <form action="{% url 'logout' %}" method="post" class="logout-form">
       {% csrf_token %}

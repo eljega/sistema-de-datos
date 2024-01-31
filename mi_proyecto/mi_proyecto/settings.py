@@ -18,9 +18,6 @@ import dj_database_url
 load_dotenv()
 # settings.py
 
- #activar en produccion:
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -99,9 +96,9 @@ WSGI_APPLICATION = 'mi_proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'base-de-datos-elsistema',
+        'NAME': 'nombre',
         'USER': 'postgres',
-        'PASSWORD': '24.Javier.98',
+        'PASSWORD': 'contraseña',
         'HOST': 'localhost',  # o la dirección IP del servidor de base de datos
         'PORT': '5432',  # el puerto por defecto para PostgreSQL
     }

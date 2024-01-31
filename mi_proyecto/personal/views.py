@@ -14,17 +14,17 @@ from django.core.exceptions import ValidationError
 
 @login_required
 def lista_personal(request):
-    query = request.GET.get('q', '')  # Obtén el parámetro de búsqueda del querystring
+    query = request.GET.get('q', '')  
     nucleo_query = request.GET.get('nucleo', '')
-    nucleos = Nucleo.objects.all()  # Define nucleos aquí para que esté disponible independientemente del tipo de usuario
+    nucleos = Nucleo.objects.all() 
 
     if request.user.es_superior():
         personal = Personal.objects.all()
     else:
         personal = Personal.objects.filter(nucleo=request.user.nucleo)
-        nucleos = Nucleo.objects.filter(id=request.user.nucleo.id)  # Solo el núcleo del usuario
+        nucleos = Nucleo.objects.filter(id=request.user.nucleo.id) 
 
-    if query:  # Si hay una consulta de búsqueda, filtra los resultados
+    if query:  
         personal = personal.filter(
             Q(nombre__icontains=query) | 
             Q(apellido__icontains=query) |
@@ -42,14 +42,14 @@ def lista_personal(request):
             Q(cargo__icontains=query) |
             Q(colateral__icontains=query) |
             Q(estatus__icontains=query) 
-            # Puedes añadir más campos por los que desees filtrar
+            
             
         )
     
     if nucleo_query:
         personal = personal.filter(nucleo__nombre__icontains=nucleo_query)
 
-    context = {'personal': personal, 'nucleos': nucleos}  # Define el contexto una sola vez aquí
+    context = {'personal': personal, 'nucleos': nucleos} 
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         html = render_to_string('personal/fragmento_lista_personal.html', context, request=request)
@@ -65,11 +65,10 @@ def crear_personal(request):
         if form.is_valid():
             try:
                 personal = form.save(commit=False)
-                personal.full_clean()  # Llama a la validación del modelo
+                personal.full_clean() 
                 personal.save()
                 return redirect('lista_personal')
             except ValidationError as e:
-                # e puede ser una lista o un diccionario, dependiendo de cómo se haya levantado la excepción
                 errors = e.message_dict if hasattr(e, 'message_dict') else {'__all__': e.messages}
                 for field, messages in errors.items():
                     for message in messages:
@@ -86,7 +85,7 @@ def editar_personal(request, personal_id):
         if form.is_valid():
             try:
                 personal = form.save(commit=False)
-                personal.full_clean()  # Valida el modelo, incluyendo la lógica de edad y fecha de nacimiento
+                personal.full_clean()  
                 personal.save()
                 return redirect('lista_personal')
             except ValidationError as e:
@@ -110,16 +109,12 @@ def eliminar_personal(request, personal_id):
 
 @login_required
 def descargar_reporte_personal(request):
-    # Inicia con la consulta base que obtiene todos los instrumentos
     if request.user.es_superior():
         personal = Personal.objects.all()
     else:
         personal = Personal.objects.filter(nucleo=request.user.nucleo)
-        # Establece el núcleo_query al núcleo del usuario, ignorando la selección "Todos los núcleos"
         nucleo_query = request.user.nucleo.nombre
 
-    # Filtra por núcleo si el usuario es superior y el parámetro está presente en la solicitud
-    # Elimina el chequeo de "Todos los núcleos" ya que los usuarios básicos no deberían tener esa opción
     if request.user.es_superior():
         nucleo_query = request.GET.get('nucleo', '')
         if nucleo_query:

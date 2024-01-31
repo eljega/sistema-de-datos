@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Nucleo
 from .forms import NucleoForm
 from django.contrib.auth.decorators import login_required
-from usuarios.decorators import rango_superior_required  # Importa el decorador que acabamos de crear
+from usuarios.decorators import rango_superior_required 
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
@@ -12,11 +12,11 @@ import csv
 
 @login_required
 def lista_nucleos(request):
-    query = request.GET.get('q', '')  # Parámetro de búsqueda
+    query = request.GET.get('q', '') 
 
     nucleos = Nucleo.objects.all()
 
-    if query:  # Si hay una consulta de búsqueda, filtra los resultados
+    if query: 
         nucleos = nucleos.filter(
             Q(nombre__icontains=query) | 
             Q(codigo__icontains=query) |
@@ -25,7 +25,6 @@ def lista_nucleos(request):
             Q(estatus_inmueble__icontains=query) |
             Q(infraestructura__icontains=query) |
             Q(nombre_responsable__icontains=query)
-            # Añade aquí otros campos por los que quieras filtrar 
         )
 
     context = {'nucleos': nucleos}

@@ -20,7 +20,7 @@ class Instrumento(models.Model):
         ('otro', 'Otro'),
     ]
     procedencia = models.CharField(
-        max_length=100,  # Ajuste para acomodar el valor más largo
+        max_length=100,
         choices=PROCEDENCIA_CHOICES,
         default='otro'
     )

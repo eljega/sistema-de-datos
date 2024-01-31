@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from nucleos.models import Nucleo  # Asegúrate de que la ruta al modelo Nucleo sea correcta
+from nucleos.models import Nucleo
 
 class Usuario(AbstractUser):
     RANGO_CHOICES = [

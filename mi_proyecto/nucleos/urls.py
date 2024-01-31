@@ -11,5 +11,4 @@ urlpatterns = [
     path('eliminar/<int:nucleo_id>/', views.eliminar_nucleo, name='eliminar_nucleo'),
     path('descargar_reporte/', views.descargar_reporte_nucleos, name='descargar_reporte_nucleos'),
 
-    # Puedes añadir más rutas según necesites
 ]

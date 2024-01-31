@@ -21,7 +21,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('usuarios.urls')),  # Asume que 'usuarios' manejará el inicio de sesión y el panel principal
+    path('', include('usuarios.urls')), 
     path('alumnos/', include('alumnos.urls')),
     path('instrumentos/', include('instrumentos.urls')),
     path('nucleos/', include('nucleos.urls')),

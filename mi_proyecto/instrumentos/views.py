@@ -4,7 +4,6 @@ from .models import Instrumento
 from .forms import InstrumentoForm
 from django.contrib.auth.decorators import login_required
 from usuarios.decorators import rango_superior_required 
-# instrumentos/views.py
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 import csv
@@ -18,11 +17,11 @@ def lista_instrumentos(request):
     nucleo_query = request.GET.get('nucleo', '')
 
     instrumentos = Instrumento.objects.all()
-    nucleos = Nucleo.objects.all()  # Obtener todos los núcleos para el menú desplegable
+    nucleos = Nucleo.objects.all()
 
     if not request.user.es_superior():
         instrumentos = instrumentos.filter(nucleo=request.user.nucleo)
-        nucleos = Nucleo.objects.filter(id=request.user.nucleo.id)  # Solo el núcleo del usuario
+        nucleos = Nucleo.objects.filter(id=request.user.nucleo.id)
 
 
     if query:
@@ -50,7 +49,6 @@ def lista_instrumentos(request):
     if nucleo_query:
         instrumentos = instrumentos.filter(nucleo__nombre__icontains=nucleo_query)
 
-    # context debe incluir 'nucleos' para el menú desplegable, incluso si está vacío
     context = {'instrumentos': instrumentos, 'nucleos': nucleos}
 
     return render(request, 'instrumentos/lista_instrumentos.html', context)
@@ -91,22 +89,17 @@ def eliminar_instrumento(request, instrumento_id):
 
 @login_required
 def descargar_reporte_instrumentos(request):
-    # Inicia con la consulta base que obtiene todos los instrumentos
     if request.user.es_superior():
         instrumentos = Instrumento.objects.all()
     else:
         instrumentos = Instrumento.objects.filter(nucleo=request.user.nucleo)
-        # Establece el núcleo_query al núcleo del usuario, ignorando la selección "Todos los núcleos"
         nucleo_query = request.user.nucleo.nombre
 
-    # Filtra por núcleo si el usuario es superior y el parámetro está presente en la solicitud
-    # Elimina el chequeo de "Todos los núcleos" ya que los usuarios básicos no deberían tener esa opción
     if request.user.es_superior():
         nucleo_query = request.GET.get('nucleo', '')
         if nucleo_query:
             instrumentos = instrumentos.filter(nucleo__nombre__icontains=nucleo_query)
 
-    # Crea la respuesta HTTP para el archivo CSV
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = f'attachment; filename="reporte_instrumentos_{nucleo_query}.csv"'
 

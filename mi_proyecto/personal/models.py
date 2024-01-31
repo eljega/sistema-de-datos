@@ -40,7 +40,6 @@ class Personal(models.Model):
     colateral = models.CharField(max_length=100)
     estatus = models.CharField(max_length=10, choices=ESTATUS_CHOICES, default='renuncia')
     def save(self, *args, **kwargs):
-        # Calcula la edad basada en la fecha de nacimiento
         hoy = datetime.date.today()
         edad_calculada = hoy.year - self.fecha_nacimiento.year - ((hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
 
@@ -51,5 +50,5 @@ class Personal(models.Model):
 
     def __str__(self):
         return self.nombre
-    # ...
+
 

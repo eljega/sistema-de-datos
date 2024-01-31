@@ -1,7 +1,7 @@
 <!-- personal/templates/personal/lista_personal.html -->
 {% extends 'base.html' %}
 
-{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+{% load static %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'style_alumnos.css' %}">
@@ -18,8 +18,6 @@
   <button id="descargar-reporte-btn" class="btn btn-listas btn-descargar" onclick="location.href='{% url 'descargar_reporte_personal' %}?nucleo={{ request.GET.nucleo }}'">Descargar</button>
 
 
-
-<!-- Añade un campo de selección de núcleo en tu formulario de búsqueda -->
 <form method="get" action="{% url 'lista_personal' %}">
   <div class="form-group">
     <input type="text" name="q" class="form-control" placeholder="Buscar personal..." value="{{ request.GET.q }}">
@@ -54,7 +52,6 @@
         <th>Cargo</th>
         <th>Colateral</th>
         <th>Estatus</th>
-        <!-- Agrega más encabezados de columnas según tu modelo Personal -->
         <th>Acciones</th>
 
       </tr>
@@ -80,7 +77,6 @@
           <td>{{ persona.cargo }}</td>
           <td>{{ persona.colateral }}</td>
           <td>{{ persona.get_estatus_display }}</td>
-          <!-- Agrega más celdas de datos según tu modelo Personal -->
           <td>
 
               <button class="btn btn-listas" onclick="location.href='{% url 'editar_personal' persona.id_personal %}'">Editar</button>
@@ -94,16 +90,15 @@
 
 
 
-<!-- personal/templates/personal/fragmento_lista_personal.html -->
 <table class="table">
-  <!-- ... contenido de tu tabla ... -->
+  
 </table>
 
 {% block javascript %}
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function () {
     const nucleoSelect = document.querySelector('select[name="nucleo"]');
-    const downloadButton = document.querySelector('#descargar-reporte-btn'); // Asegúrate de que este es el ID correcto del botón de descarga
+    const downloadButton = document.querySelector('#descargar-reporte-btn');
 
     function downloadReport() {
       const nucleoValue = nucleoSelect.value;

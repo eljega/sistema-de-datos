@@ -1,6 +1,6 @@
 <!-- instrumentos/templates/instrumentos/lista_instrumentos.html -->
 {% extends 'base.html' %}
-{% load static %}  <!-- Asegúrate de que esta línea esté aquí -->
+{% load static %}
 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'style_alumnos.css' %}">
@@ -10,15 +10,10 @@
   <h2>Bienes Nacionales</h2>
   <button class="btn btn-listas" onclick="location.href='{% url 'dashboard' %}'">Volver</button>
 
-
-
     <button class="btn btn-listas" onclick="location.href='{% url 'crear_instrumento' %}'">Agregar</button>
-
 
     <button id="descargar-reporte-btn" class="btn btn-listas btn-descargar" onclick="location.href='{% url 'descargar_reporte_instrumentos' %}?nucleo={{ request.GET.nucleo }}'">Descargar</button>
 
-
-    <!-- Añade un campo de selección de núcleo en tu formulario de búsqueda -->
     <form method="get" action="{% url 'lista_instrumentos' %}">
       <div class="form-group">
         <input type="text" name="q" class="form-control" placeholder="Buscar personal..." value="{{ request.GET.q }}">
@@ -31,7 +26,6 @@
       </div>
     </form>
     <div class="table-container">
-      <!-- Tabla de instrumentos -->
       <table class="table table-dark dashboard-table">
         <thead>
             <tr>
@@ -55,7 +49,6 @@
                 <th>Nombre Persona</th>
                 <th>Dirección</th>
                 <th>Número Expediente</th>
-                <!-- Agrega más encabezados según tus campos -->
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -82,7 +75,6 @@
                     <td>{{ instrumento.nombre_persona }}</td>
                     <td>{{ instrumento.direccion }}</td>
                     <td>{{ instrumento.numero_expediente_procesal }}</td>
-                    <!-- Agrega más celdas según tus campos -->
                     <td>
                             <button class="btn btn-listas" onclick="location.href='{% url 'editar_instrumento' instrumento.id_instrumento %}'">Editar</button>
                             <button class="btn btn-listas btn-eliminar" onclick="location.href='{% url 'eliminar_instrumento' instrumento.id_instrumento %}'">Eliminar</button>
@@ -95,9 +87,8 @@
     </table>
     
 
- <!-- personal/templates/personal/fragmento_lista_personal.html -->
 <table class="table">
-  <!-- ... contenido de tu tabla ... -->
+
 </table>
 
 {% block javascript %}

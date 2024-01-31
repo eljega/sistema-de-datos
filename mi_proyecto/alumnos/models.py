@@ -47,7 +47,6 @@ class Alumno(models.Model):
     id_alumno = models.AutoField(primary_key=True)
     nucleo = models.ForeignKey('nucleos.Nucleo', on_delete=models.CASCADE)
     catedra = models.CharField(max_length=100)
-    #estatus = models.CharField(max_length=8, choices=ESTADO_CHOICES, default='activo')
     
     ESTADO_CHOICES = [
         ('activo', 'Activo'),
@@ -67,7 +66,6 @@ class Alumno(models.Model):
     direccion_de_habitacion = models.CharField(max_length=100)
 
     def save(self, *args, **kwargs):
-        # Calcula la edad basada en la fecha de nacimiento
         hoy = datetime.date.today()
         edad_calculada = hoy.year - self.fecha_nacimiento.year - ((hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
         if edad_calculada != self.edad:
